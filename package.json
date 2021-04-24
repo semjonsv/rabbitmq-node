@@ -6,6 +6,7 @@
   "author": "Semjons Voronovs",
   "license": "ISC",
   "dependencies": {
-    "amqplib": "^0.7.1"
+    "amqplib": "^0.7.1",
+    "dotenv": "^8.2.0"
   }
 }

@@ -1,10 +1,11 @@
 const amqp = require('amqplib')
+require('dotenv').config()
 
 const connectRabbitMq = async () => {
     try {
-        const conn = await amqp.connect('amqp://localhost:5672')
+        const conn = await amqp.connect(process.env.RABBITMQ)
         const ch = await conn.createChannel()
-        const queue = 'hello'
+        const queue = process.env.QUEUE
 
         const msg = JSON.stringify({
             'title': 'Hello World!',
