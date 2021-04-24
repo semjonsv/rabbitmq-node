@@ -6,23 +6,24 @@ const connectRabbitMq = async () => {
         const ch = await conn.createChannel()
         const queue = 'hello'
 
-        console.log("[AMQP]: Waiting for messages in", queue)
+        console.log('[AMQP]: Waiting for messages in', queue)
 
-        ch.consume(queue, function(msg) {
-            console.log("[MSG]", msg.content.toJSON())
+        ch.consume(queue, (msg) => {
+            console.log('[MSG]:', msg.content.toString())
         }, {
-            noAck: false
+            noAck: true
         });
 
         conn.on('error', function (err) {
             console.log('[AMQP]: conn error:', err)
         });
+
         conn.on('close', () => {
-            console.log("[AMQP]: conn closed, reconnecting in 1s")
+            console.log('[AMQP]: conn closed, reconnecting in 1s')
             setTimeout(connectRabbitMq, 1000)
         });
     } catch (err) {
-        console.log('[AMQP]: unknown error: ', err)
+        console.log('[AMQP]: unknown error:', err)
         console.log('Reconnecting in 1s')
         setTimeout(connectRabbitMq, 1000)
     }
