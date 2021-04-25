@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Semjons Voronovs",
   "license": "ISC",
+  "scripts": {
+    "consumer": "node src/consumer.js",
+    "publisher": "node src/publisher.js"
+  },
   "dependencies": {
     "amqplib": "^0.7.1",
     "dotenv": "^8.2.0",
