@@ -10,7 +10,7 @@ DB_COLLECTION=collection_name
 DB_NAME=db
 ````
 \
-🔥 To run consumer:
+🔥 To start consumer:
 ````
 npm run consumer
 ````
